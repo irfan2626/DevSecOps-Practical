@@ -209,7 +209,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'master', url: 'https://github.com/ashaik65/DevSecOps-Practical.git'
+                git branch: 'master', url: 'https://github.com/irfan2626/DevSecOps-Practical.git'
             }
         }
         stage("Sonarqube Analysis") {
@@ -307,7 +307,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'master', url: 'https://github.com/ashaik65/DevSecOps-Practical.git'
+                git branch: 'master', url: 'https://github.com/irfan2626/DevSecOps-Practical.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -345,21 +345,21 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
-                       sh "docker build --build-arg TMDB_V3_API_KEY=<yourapikey> -t netflix ."
-                       sh "docker tag netflix ashaik65/netflix:latest "
-                       sh "docker push ashaik65/netflix:latest "
+                       sh "docker build --build-arg TMDB_V3_API_KEY=278196107b816bad1d7ef9d9f68954ba -t netflix ."
+                       sh "docker tag netflix irfan2626/netflix:latest "
+                       sh "docker push irfan2626/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image ashaik65/netflix:latest > trivyimage.txt" 
+                sh "trivy image irfan2626/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name netflix -p 8081:80 ashaik65/netflix:latest'
+                sh 'docker run -d --name netflix -p 8081:80 irfan2626/netflix:latest'
             }
         }
     }
@@ -744,7 +744,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'master', url: 'https://github.com/ashaik65/DevSecOps-Practical.git'
+                git branch: 'master', url: 'https://github.com/irfan2626/DevSecOps-Practical.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -782,21 +782,21 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
-                       sh "docker build --build-arg TMDB_V3_API_KEY=<your key> -t netflix ."
-                       sh "docker tag netflix ashaik65/netflix:latest "
-                       sh "docker push ashaik65/netflix:latest "
+                       sh "docker build --build-arg TMDB_V3_API_KEY=278196107b816bad1d7ef9d9f68954ba -t netflix ."
+                       sh "docker tag netflix irfan2626/netflix:latest "
+                       sh "docker push irfan2626/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image ashaik65/netflix:latest > trivyimage.txt" 
+                sh "trivy image irfan2626/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d  -p 8081:80 ashaik65/netflix:latest'
+                sh 'docker run -d  -p 8081:80 irfan2626/netflix:latest'
             }
         }
     }
@@ -809,7 +809,7 @@ pipeline{
               body: "Project: ${env.JOB_NAME}<br/>" +
                     "Build Number: ${env.BUILD_NUMBER}<br/>" +
                     "URL: ${env.BUILD_URL}<br/>",
-              to: 'your-email@gmail.com',
+              to: 'mujawarirfan557@gmail.com',
               attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
     }
 }
