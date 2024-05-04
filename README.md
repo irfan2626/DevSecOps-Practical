@@ -346,20 +346,20 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build --build-arg TMDB_V3_API_KEY=278196107b816bad1d7ef9d9f68954ba -t netflix ."
-                       sh "docker tag netflix irfan2626/netflix:latest "
-                       sh "docker push irfan2626/netflix:latest "
+                       sh "docker tag netflix iran141/netflix:latest "
+                       sh "docker push iran141/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image irfan2626/netflix:latest > trivyimage.txt" 
+                sh "trivy image iran141/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name netflix -p 8081:80 irfan2626/netflix:latest'
+                sh 'docker run -d --name netflix -p 8081:80 iran141/netflix:latest'
             }
         }
     }
@@ -783,20 +783,20 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build --build-arg TMDB_V3_API_KEY=278196107b816bad1d7ef9d9f68954ba -t netflix ."
-                       sh "docker tag netflix irfan2626/netflix:latest "
-                       sh "docker push irfan2626/netflix:latest "
+                       sh "docker tag netflix iran141/netflix:latest "
+                       sh "docker push iran141/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image irfan2626/netflix:latest > trivyimage.txt" 
+                sh "trivy image iran141/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d  -p 8081:80 irfan2626/netflix:latest'
+                sh 'docker run -d  -p 8081:80 iran141/netflix:latest'
             }
         }
     }
