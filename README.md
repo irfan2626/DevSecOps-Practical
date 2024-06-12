@@ -140,7 +140,13 @@ Install below plugins
 
 3 NodeJs Plugin (Install Without restart)
 
-4 Email Extension Plugin
+4 Email Extension template Plugin
+
+5 docker & k8 plugins
+
+6 OWASP Dependency-Check plugin & workspaces claenup plugin
+
+7 prometheus metrics plugin
 
 ### **Configure Java and Nodejs in Global Tool Configuration**
 
@@ -784,14 +790,14 @@ pipeline{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build --build-arg TMDB_V3_API_KEY=278196107b816bad1d7ef9d9f68954ba -t netflix ."
                        sh "docker tag netflix iran141/netflix:latest "
-                       sh "docker push iran141/netflix:latest "
+                       sh "docker push irfan2626/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image iran141/netflix:latest > trivyimage.txt" 
+                sh "trivy image irfan2626/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
